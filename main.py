@@ -1,111 +1,112 @@
-from kivymd.app import MDApp
+from kivy.app import App
 from kivy.lang import Builder
-
-kv = """
-Screen:
-    MDTextField:
-        hint_text: 'Enter you password'
-        helper_text: 'Forgot your password?'
-        helper_text_mode: "on_focus" 
-        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
-        size_hint_x: None
-        width: 300
-        icon_right: "account-search"
-        required: True
-    MDLabel:
-        text: ""
-        id: txt
-        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
-    MDRaisedButton:
-        text: 'Action Button'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        on_press:
-            app.action()
-    MDRoundFlatButton:
-        text: 'MDRoundFlatButton'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-    MDRectangleFlatButton:
-        text: 'MDRectangleFlatButton'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-    MDRectangleFlatIconButton:
-        text: 'MDRectangleFlatIconButton'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-        width: dp(230)
-        icon: 'google'
-    MDFillRoundFlatIconButton:
-        text: 'MDFillRoundFlatIconButton'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
-        width: dp(230)
-        icon: 'google'
-    MDFloatingActionButtonSpeedDial:
-        data: app.data
-        rotation_root_button: True
-    BoxLayout:
-        orientation: 'vertical'
-        MDToolbar:
-            title: "MDToolbar"
-            left_action_items: [["menu", lambda x: nav_draw.set_state()]]
-        Widget:
-
-    MDNavigationDrawer:
-        id: nav_draw
-        orientation: "vertical"
-        padding: "8dp"
-        spacing: "8dp"
-
-        AnchorLayout:
-            anchor_x: "left"
-            size_hint_y: None
-            height: avatar.height
-            Image:
-                id: avatar
-                size_hint: None, None
-                size: "56dp", "56dp"
-                source: "data/logo/kivy-icon-256.png"
-        MDLabel:
-            text: "Kaustubh Gupta"
-            font_style: "Button"
-            size_hint_y: None
-            height: self.texture_size[1]
-
-        MDLabel:
-            text: "youreamil@gmail.com"
-            font_style: "Caption"
-            size_hint_y: None
-            height: self.texture_size[1]
-
-        ScrollView:
-            MDList:
-                OneLineAvatarListItem:
-                    on_press:
-                        nav_draw.set_state("close")
-                    text: "Home"
-                    IconLeftWidget:
-                        icon: "home"
-                OneLineAvatarListItem:
-                    on_press:
-                        nav_draw.set_state("close")
-                    text: "About"
-                    IconLeftWidget:
-                        icon: 'information'
-
-        Widget:
-"""
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import ObjectProperty
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from database import DataBase
 
 
-class Main(MDApp):
-    data = {
-        'language-python': 'Python',
-        'language-php': 'PHP',
-        'language-cpp': 'C++',
-    }
+class CreateAccountWindow(Screen):
+    namee = ObjectProperty(None)
+    email = ObjectProperty(None)
+    password = ObjectProperty(None)
 
-    def action(self):
-        label = self.root.ids.txt
-        label.text = "This text is displayed after pressing button"
+    def submit(self):
+        if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0:
+            if self.password != "":
+                db.add_user(self.email.text, self.password.text, self.namee.text)
 
+                self.reset()
+
+                sm.current = "login"
+            else:
+                invalidForm()
+        else:
+            invalidForm()
+
+    def login(self):
+        self.reset()
+        sm.current = "login"
+
+    def reset(self):
+        self.email.text = ""
+        self.password.text = ""
+        self.namee.text = ""
+
+
+class LoginWindow(Screen):
+    email = ObjectProperty(None)
+    password = ObjectProperty(None)
+
+    def loginBtn(self):
+        if db.validate(self.email.text, self.password.text):
+            MainWindow.current = self.email.text
+            self.reset()
+            sm.current = "main"
+        else:
+            invalidLogin()
+
+    def createBtn(self):
+        self.reset()
+        sm.current = "create"
+
+    def reset(self):
+        self.email.text = ""
+        self.password.text = ""
+
+
+class MainWindow(Screen):
+    n = ObjectProperty(None)
+    created = ObjectProperty(None)
+    email = ObjectProperty(None)
+    current = ""
+
+    def logOut(self):
+        sm.current = "login"
+
+    def on_enter(self, *args):
+        password, name, created = db.get_user(self.current)
+        self.n.text = "Account Name: " + name
+        self.email.text = "Email: " + self.current
+        self.created.text = "Created On: " + created
+
+
+class WindowManager(ScreenManager):
+    pass
+
+
+def invalidLogin():
+    pop = Popup(title='Invalid Login',
+                  content=Label(text='Invalid username or password.'),
+                  size_hint=(None, None), size=(400, 400))
+    pop.open()
+
+
+def invalidForm():
+    pop = Popup(title='Invalid Form',
+                  content=Label(text='Please fill in all inputs with valid information.'),
+                  size_hint=(None, None), size=(400, 400))
+
+    pop.open()
+
+
+kv = Builder.load_file("my.kv")
+
+sm = WindowManager()
+db = DataBase("users.txt")
+
+screens = [LoginWindow(name="login"), CreateAccountWindow(name="create"),MainWindow(name="main")]
+for screen in screens:
+    sm.add_widget(screen)
+
+sm.current = "login"
+
+
+class MyMainApp(App):
     def build(self):
-        return Builder.load_string(kv)
+        return sm
 
 
-Main().run()
+if __name__ == "__main__":
+    MyMainApp().run()
