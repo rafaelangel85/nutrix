@@ -12,13 +12,9 @@ https://en.wikipedia.org/wiki/Model–view–controller
 """
 import os
 from typing import NoReturn
-
 from kivy.uix.screenmanager import ScreenManager
-
 from kivymd.app import MDApp
-
 from View.screens import screens
-
 from kivy.lang import Builder
 
 
