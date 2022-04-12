@@ -30,8 +30,10 @@ class ScrollableLabel(ScrollView):
         self.layout = GridLayout(cols=1, size_hint_y=None)
         self.add_widget(self.layout)
 
-        self.chat_history = MDLabel(
-            size_hint_y=None, markup=True, font_style=theme_font_styles[6], theme_text_color="Primary")
+        self.chat_history = MDLabel(size_hint_y=None,
+                                    markup=True,
+                                    font_style=theme_font_styles[6],
+                                    theme_text_color="Primary")
         self.scroll_to_point = MDLabel()
 
         self.layout.add_widget(self.chat_history)
@@ -70,33 +72,39 @@ class ConnectPage(GridLayout):
             prev_username = ""
         self.add_widget(MDLabel())
         self.add_widget(MDLabel())
-        self.add_widget(MDLabel(text="IP : ", halign="center",
+        self.add_widget(MDLabel(text="IP : ",
+                                halign="center",
                                 theme_text_color="Primary"))
         self.float = FloatLayout()
-        self.ip = MDTextField(text=prev_ip, multiline=False,
+        self.ip = MDTextField(text=prev_ip,
+                              multiline=False,
                               pos_hint={'x': 0, 'y': 0.2})
         self.float.add_widget(self.ip)
         self.add_widget(self.float)
 
-        self.add_widget(MDLabel(text="Port : ", halign="center",
+        self.add_widget(MDLabel(text="Port : ",
+                                halign="center",
                                 theme_text_color="Primary"))
         self.float = FloatLayout()
-        self.port = MDTextField(
-            text=prev_port, multiline=False, pos_hint={'x': 0, 'y': 0.2})
+        self.port = MDTextField(text=prev_port,
+                                multiline=False,
+                                pos_hint={'x': 0, 'y': 0.2})
         self.float.add_widget(self.port)
         self.add_widget(self.float)
 
         self.add_widget(MDLabel(text="Username : ",
-                                halign="center", theme_text_color="Primary"))
+                                halign="center",
+                                theme_text_color="Primary"))
         self.float = FloatLayout()
-        self.username = MDTextField(
-            text=prev_username, multiline=False, pos_hint={'x': 0, 'y': 0.2})
+        self.username = MDTextField(text=prev_username,
+                                    multiline=False,
+                                    pos_hint={'x': 0, 'y': 0.2})
         self.float.add_widget(self.username)
         self.add_widget(self.float)
 
         self.float_layout = FloatLayout()
-        self.connect_fab = MDFloatingActionButton(
-            icon="arrow-right", pos_hint={'x': 0.68, 'y': 0})
+        self.connect_fab = MDFloatingActionButton(icon="arrow-right",
+                                                  pos_hint={'x': 0.68, 'y': 0})
         self.connect_fab.bind(on_release=self.connect_button)
         self.float_layout.add_widget(self.connect_fab)
         self.add_widget(MDLabel())
@@ -136,8 +144,10 @@ class InfoPage(GridLayout):
         super().__init__(**kwargs)
         self.cols = 1
 
-        self.message = MDLabel(halign="center", valign="middle",
-                               font_style=theme_font_styles[7], theme_text_color="Primary")
+        self.message = MDLabel(halign="center",
+                               valign="middle",
+                               font_style=theme_font_styles[7],
+                               theme_text_color="Primary")
         self.message.bind(width=self.update_text_width)
         self.add_widget(self.message)
 
@@ -213,8 +223,8 @@ class SuperChatApp(MDApp):
         app.theme_cls.accent_palette = "DeepPurple"
         app.theme_cls.theme_style = "Light"
         Window.borderless = False
-        self.title = "Super Chat"
-        Config.set('kivy', 'window_title', 'Super Chat')
+        self.title = "Nutrix"
+        Config.set('kivy', 'window_title', 'Nutrix')
 
         self.root_sm = ScreenManager()
         rscreen = Screen(name="Root")
@@ -223,9 +233,9 @@ class SuperChatApp(MDApp):
         self.nl_sm = ScreenManager()
         nl_screen = Screen(name="nl")
         self.toolbar = MDToolbar(pos_hint={'top': 1},
-                                 elevation=9, title=chat_app.title, md_bg_color=chat_app.theme_cls.primary_color)
-        self.toolbar.left_action_items = [
-            ["menu", lambda x: self.nav_drawer.set_state()]]
+                                 elevation=9, title=chat_app.title,
+                                 md_bg_color=chat_app.theme_cls.primary_color)
+        self.toolbar.left_action_items = [["menu", lambda x: self.nav_drawer.set_state()]]
         nl_screen.add_widget(self.toolbar)
         self.screen_manager = ScreenManager()
 
@@ -253,16 +263,18 @@ class SuperChatApp(MDApp):
             'center_x': 1, 'center_y': 0.55})
         self.sub_nav.add_widget(self.iconitem)
         self.fl.add_widget(self.sub_nav)
-        self.settings_btn = OneLineAvatarIconListItem(
-            text="Dark Mode", on_press=self.theme_change, on_release=lambda x: self.nav_drawer.set_state(),
-            pos_hint={'center_x': 0.5, 'center_y': 0.86})
-        self.iconitem = IconLeftWidget(
-            icon="theme-light-dark", pos_hint={'center_x': 1, 'center_y': 0.55})
+        self.settings_btn = OneLineAvatarIconListItem(text="Dark Mode",
+                                                      on_press=self.theme_change,
+                                                      on_release=lambda x: self.nav_drawer.set_state(),
+                                                      pos_hint={'center_x': 0.5, 'center_y': 0.86})
+        self.iconitem = IconLeftWidget(icon="theme-light-dark",
+                                       pos_hint={'center_x': 1, 'center_y': 0.55})
         self.settings_btn.add_widget(self.iconitem)
         self.fl.add_widget(self.settings_btn)
         self.ndbox.add_widget(self.fl)
-        self.toolbar = MDToolbar(
-            elevation=8, title=chat_app.title, md_bg_color=chat_app.theme_cls.primary_color)
+        self.toolbar = MDToolbar(elevation=8,
+                                 title=chat_app.title,
+                                 md_bg_color=chat_app.theme_cls.primary_color)
         self.toolbar.left_action_items = [
             ["close", sys.exit]]
         self.ndbox.add_widget(self.toolbar)
