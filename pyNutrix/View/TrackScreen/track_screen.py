@@ -1,4 +1,5 @@
 from typing import NoReturn
+from kivy.app import App
 
 from View.base_screen import BaseScreenView
 
@@ -12,3 +13,6 @@ class TrackScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         """
+
+    def set_screen(self, screen: App) -> NoReturn:
+        App.get_running_app().root.current = screen

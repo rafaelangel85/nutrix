@@ -11,7 +11,7 @@
 
         MDToolbar:
             title: "MainScreen"
-            right_action_items: [["web", lambda x: x]]
+            left_action_items: [["food", lambda x: root.set_screen('track screen')]]
 
         MDFloatLayout:
 
@@ -47,6 +47,7 @@
                         on_text: root.controller.set_user_data("password", self.text)
 
     MDFillRoundFlatButton:
-        text: "LOGIN"
+        text: "ADD FOOD"
         on_release: root.controller.on_tap_button_login()
         pos_hint: {"center_x": .5, "center_y": .1}
+        on_press: root.manager.current = 'track screen'
