@@ -3,7 +3,6 @@ from kivy.app import App
 
 from View.base_screen import BaseScreenView
 
-
 class MainScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
 

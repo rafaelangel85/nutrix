@@ -38,16 +38,16 @@
                     padding: "50dp"
                     spacing: "20dp"
 
-                    MDTextField:
-                        hint_text: "Login"
-                        on_text: root.controller.set_user_data("login", self.text)
+        MDProgressBar:
+            pos_hint: {"right": 0.6}
+            value: 55
+            max: 100
+            orientation: "vertical"
+            size_hint_x: None
+            width: "20dp"
 
-                    MDTextField:
-                        hint_text: "Password"
-                        on_text: root.controller.set_user_data("password", self.text)
 
     MDFillRoundFlatButton:
         text: "ADD FOOD"
         on_release: root.controller.on_tap_button_login()
         pos_hint: {"center_x": .5, "center_y": .1}
-        on_press: root.manager.current = 'track screen'
