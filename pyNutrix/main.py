@@ -1,25 +1,20 @@
 import os
 import sys
 
-import kivy
-from kivy.app import App
 from kivy.clock import Clock
 from kivy.config import Config
 from kivy.core.window import Window
-from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 from kivymd.app import MDApp
 from kivymd.font_definitions import theme_font_styles
 from kivymd.theming import ThemeManager
-from kivymd.uix.button import MDFlatButton, MDFloatingActionButton
-from kivymd.uix.card import MDSeparator
+from kivymd.uix.button import MDFloatingActionButton
 from kivymd.uix.label import MDLabel
-from kivymd.uix.list import MDList, OneLineAvatarIconListItem, IconLeftWidget
+from kivymd.uix.list import OneLineAvatarIconListItem, IconLeftWidget
 from kivymd.uix.navigationdrawer import MDNavigationDrawer, MDNavigationLayout
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.toolbar import MDToolbar
