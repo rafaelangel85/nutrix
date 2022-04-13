@@ -82,4 +82,5 @@ class Nutrix(MDApp):
                     Builder.load_file(path_to_kv_file)
 
 
+print("Antes del Nutrix().run()")
 Nutrix().run()
