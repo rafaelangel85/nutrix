@@ -58,6 +58,7 @@ class Nutrix(MDApp):
             view.manager_screens = self.manager_screens
             view.name = name_screen
             self.manager_screens.add_widget(view)
+            break
 
     def load_all_kv_files(self, path_to_directory: str) -> None:
         """
