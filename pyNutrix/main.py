@@ -83,6 +83,7 @@ class Nutrix(MDApp):
                         and "__MACOS" not in path_to_dir  # if use Mac OS
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
+                    print("Cargando kv: " + path_to_kv_file)
                     Builder.load_file(path_to_kv_file)
 
 
