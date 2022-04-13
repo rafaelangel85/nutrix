@@ -67,6 +67,8 @@ class Nutrix(MDApp):
         .. versionadded:: 1.0.0
         """
 
+        print("El directorio es" + path_to_directory)
+
         for path_to_dir, dirs, files in os.walk(path_to_directory):
             if (
                     "venv" in path_to_dir
