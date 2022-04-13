@@ -5,6 +5,7 @@ from View.base_screen import BaseScreenView
 
 __version__ = '0.0.1'
 
+
 class MainScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
 
@@ -20,4 +21,3 @@ class MainScreenView(BaseScreenView):
 
     def get_version(self) -> str:
         return __version__
-        

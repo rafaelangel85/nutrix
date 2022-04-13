@@ -39,7 +39,6 @@ class Nutrix(MDApp):
 
         self.theme_cls.primary_palette = "Amber"
         self.generate_application_screens()
-        print("Despues de self.generate_application_screens()")
         return self.manager_screens
 
     def generate_application_screens(self) -> NoReturn:
