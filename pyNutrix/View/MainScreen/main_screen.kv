@@ -11,7 +11,7 @@
         orientation: "vertical"
 
         MDToolbar:
-            title: "MainScreen"
+            title: "MainScreen - " + root.get_version()
             left_action_items: [["food", lambda x: root.set_screen('track screen')]]
 
         MDFloatLayout:
@@ -68,9 +68,3 @@
                         value: 55
                         max: 100
                         orientation: "horizontal"
-
-
-    MDFillRoundFlatButton:
-        text: "ADD FOOD"
-        on_release: root.controller.on_tap_button_login()
-        pos_hint: {"center_x": .5, "center_y": .1}

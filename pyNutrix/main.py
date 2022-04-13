@@ -25,7 +25,7 @@ class Nutrix(MDApp):
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = ScreenManager()
-        
+
     def build(self) -> ScreenManager:
         """
         Initializes the application; it will be called only once.
@@ -67,16 +67,16 @@ class Nutrix(MDApp):
 
         for path_to_dir, dirs, files in os.walk(path_to_directory):
             if (
-                "venv" in path_to_dir
-                or ".buildozer" in path_to_dir
-                or "kivymd/tools/patterns/MVC" in path_to_dir
+                    "venv" in path_to_dir
+                    or ".buildozer" in path_to_dir
+                    or "kivymd/tools/patterns/MVC" in path_to_dir
             ):
                 continue
             for name_file in files:
                 if (
-                    os.path.splitext(name_file)[1] == ".kv"
-                    and name_file != "style.kv"  # if use PyInstaller
-                    and "__MACOS" not in path_to_dir  # if use Mac OS
+                        os.path.splitext(name_file)[1] == ".kv"
+                        and name_file != "style.kv"  # if use PyInstaller
+                        and "__MACOS" not in path_to_dir  # if use Mac OS
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
                     Builder.load_file(path_to_kv_file)
