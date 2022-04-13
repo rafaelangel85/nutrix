@@ -1,5 +1,6 @@
 #:import images_path kivymd.images_path
 
+# md_bg_color: app.theme_cls.primary_color # Esto es para que se vea el fondo del MDToolbar
 
 <MainScreenView>
 
@@ -27,7 +28,7 @@
 
                 MDLabel:
                     id: prev_label
-                    text: "To log in, enter your personal data:"
+                    text: "Tracking progress"
                     font_style: "H6"
                     adaptive_height: True
                     halign: "center"
@@ -38,13 +39,50 @@
                     padding: "50dp"
                     spacing: "20dp"
 
-        MDProgressBar:
-            pos_hint: {"right": 0.6}
-            value: 55
-            max: 100
-            orientation: "vertical"
-            size_hint_x: None
-            width: "20dp"
+                    MDLabel:
+                        text: "Proteins"
+                        halign: "left"
+
+                    MDProgressBar:
+                        id: progress_protein
+                        value: 55
+                        max: 100
+                        orientation: "horizontal"
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: "1dp"
+
+                    MDLabel:
+                        text: "Sugars"
+                        halign: "left"
+
+                    MDProgressBar:
+                        id: progress_sugar
+                        value: 55
+                        max: 100
+                        orientation: "horizontal"
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: "1dp"
+
+                    MDLabel:
+                        text: "Grass"
+                        halign: "left"
+
+                    MDProgressBar:
+                        id: progress_grass
+                        value: 55
+                        max: 100
+                        orientation: "horizontal"
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: "1dp"
 
 
     MDFillRoundFlatButton:
