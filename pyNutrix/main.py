@@ -21,12 +21,11 @@ from kivy.lang import Builder
 class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        print("Antes de cargar kvs")
         self.load_all_kv_files(self.directory)
-        print("Despues de cargar kvs")
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = ScreenManager()
+        print("Despues de self.manager_screens = ScreenManager()")
 
     def build(self) -> ScreenManager:
         """
@@ -67,8 +66,6 @@ class Nutrix(MDApp):
         .. versionadded:: 1.0.0
         """
 
-        print("El directorio es" + path_to_directory)
-
         for path_to_dir, dirs, files in os.walk(path_to_directory):
             if (
                     "venv" in path_to_dir
@@ -83,7 +80,6 @@ class Nutrix(MDApp):
                         and "__MACOS" not in path_to_dir  # if use Mac OS
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
-                    print("Cargando kv: " + path_to_kv_file)
                     Builder.load_file(path_to_kv_file)
 
 
