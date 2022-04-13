@@ -58,14 +58,13 @@ class Nutrix(MDApp):
             view.manager_screens = self.manager_screens
             view.name = name_screen
             self.manager_screens.add_widget(view)
-            break
 
     def load_all_kv_files(self, path_to_directory: str) -> None:
         """
         Recursively loads KV files from the selected directory.
         .. versionadded:: 1.0.0
         """
-
+        '''
         for path_to_dir, dirs, files in os.walk(path_to_directory):
             if (
                     "venv" in path_to_dir
@@ -81,6 +80,9 @@ class Nutrix(MDApp):
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
                     Builder.load_file(path_to_kv_file)
+        '''
+        Builder.load_file(os.path.join(path_to_directory, "View\\MainScreen\\main_screen.kv"))
+        Builder.load_file(os.path.join(path_to_directory, "View\\TrackScreen\\track_screen.kv"))
 
 
 print("Antes del Nutrix().run()")
