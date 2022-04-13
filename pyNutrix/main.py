@@ -25,7 +25,6 @@ class Nutrix(MDApp):
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = ScreenManager()
-        print("Despues de self.manager_screens = ScreenManager()")
 
     def build(self) -> ScreenManager:
         """
@@ -40,6 +39,7 @@ class Nutrix(MDApp):
 
         self.theme_cls.primary_palette = "Amber"
         self.generate_application_screens()
+        print("Despues de self.generate_application_screens()")
         return self.manager_screens
 
     def generate_application_screens(self) -> NoReturn:
