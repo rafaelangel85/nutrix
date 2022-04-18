@@ -1,0 +1,74 @@
+#:import images_path kivymd.images_path
+
+
+<TrackScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            title: "TrackScreen"
+            left_action_items: [["home", lambda x: root.set_screen('main screen')]]
+
+        MDFloatLayout:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_x: None
+                width: root.width - dp(72)
+                radius: 12
+                padding: "12dp"
+                md_bg_color: 1, 1, 1, .5
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    adaptive_height: True
+                    padding: "50dp"
+                    spacing: "10dp"
+
+                    MDRectangleFlatButton:
+                        text: "Breakfast"
+                        text_color: 0, 0, 1, 1
+                        md_bg_color: 1, 1, 0, 1
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        adaptive_height: True
+                        padding: "50dp"
+                        spacing: "5dp"
+
+                    MDRectangleFlatButton:
+                        text: "Lunch"
+                        text_color: 0, 0, 1, 1
+                        md_bg_color: 1, 1, 0, 1
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    adaptive_height: True
+                    padding: "50dp"
+                    spacing: "10dp"
+
+                    MDRectangleFlatButton:
+                        text: "Snack"
+                        text_color: 0, 0, 1, 1
+                        md_bg_color: 1, 1, 0, 1
+
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        adaptive_height: True
+                        padding: "50dp"
+                        spacing: "5dp"
+
+                    MDRectangleFlatButton:
+                        text: "Dinner"
+                        text_color: 0, 0, 1, 1
+                        md_bg_color: 1, 1, 0, 1
+
+
+
+    MDFillRoundFlatButton:
+        text: "ADD FOOD"
+        on_release: root.controller.on_tap_button_login()
+        pos_hint: {"center_x": .5, "center_y": .1}

@@ -22,8 +22,6 @@ class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.load_all_kv_files(self.directory)
-        # This is the screen manager that will contain all the screens of your
-        # application.
         self.manager_screens = ScreenManager()
 
     def build(self) -> ScreenManager:
