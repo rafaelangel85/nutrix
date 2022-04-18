@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = ExpenseTracker
+title = Nutrix
 
 # (str) Package name
-package.name = ExpenseTracker
+package.name = Nutrix
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.expensetracker
@@ -28,11 +28,11 @@ source.include_patterns = license
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 19.10
+version = 0.0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
-version.filename = %(source.dir)s/app/main.py
+# version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
