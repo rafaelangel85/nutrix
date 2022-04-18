@@ -46,9 +46,9 @@ colors = {
 }
 
 
-class whatsapp(MDApp):  # NOQA: N801
+class WhatsApp(MDApp):  # NOQA: N801
     def __init__(self, **kwargs):
-        super(whatsapp, self).__init__(**kwargs)
+        super(WhatsApp, self).__init__(**kwargs)
         Window.soft_input_mode = "below_target"
         self.title = "WhatsApp"
         self.icon = "assets/images/logo.png"

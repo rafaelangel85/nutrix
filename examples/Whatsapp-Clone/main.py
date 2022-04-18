@@ -9,7 +9,7 @@ import traceback  # NOQA: E402
 
 from kivy.factory import Factory  # NOQA: E402
 
-from whatsapp import whatsapp  # NOQA: E402
+from whatsapp import WhatsApp  # NOQA: E402
 
 __version__ = "0.1"
 
@@ -26,7 +26,7 @@ with open("factory_registers.json") as fd:
 
 
 try:
-    whatsapp().run()
+    WhatsApp().run()
 except Exception:
     error = traceback.format_exc()
 

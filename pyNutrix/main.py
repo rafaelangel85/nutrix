@@ -21,9 +21,7 @@ from kivy.lang import Builder
 class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
         self.load_all_kv_files(self.directory)
-
         self.manager_screens = ScreenManager()
 
     def build(self) -> ScreenManager:
