@@ -10,8 +10,6 @@ import traceback
 
 directory = os.path.dirname(__file__)
 
-__version__ = "0.0.1"
-
 try:
 
     from kivy.config import Config
