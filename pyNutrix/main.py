@@ -21,7 +21,11 @@ from kivy.lang import Builder
 class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.load_all_kv_files(self.directory)
+        # self.load_all_kv_files(self.directory)
+
+        Builder.load_file(os.path.join(self.directory, "View\\MainScreen\\main_screen.kv"))
+        Builder.load_file(os.path.join(self.directory, "View\\TrackScreen\\track_screen.kv"))
+
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = ScreenManager()
@@ -64,7 +68,7 @@ class Nutrix(MDApp):
         Recursively loads KV files from the selected directory.
         .. versionadded:: 1.0.0
         """
-        '''
+
         for path_to_dir, dirs, files in os.walk(path_to_directory):
             if (
                     "venv" in path_to_dir
@@ -80,10 +84,6 @@ class Nutrix(MDApp):
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
                     Builder.load_file(path_to_kv_file)
-        '''
-        Builder.load_file(os.path.join(path_to_directory, "View\\MainScreen\\main_screen.kv"))
-        Builder.load_file(os.path.join(path_to_directory, "View\\TrackScreen\\track_screen.kv"))
 
 
-print("Antes del Nutrix().run()")
 Nutrix().run()
