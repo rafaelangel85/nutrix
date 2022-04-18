@@ -49,7 +49,7 @@ def main():
             try:
                 app2.run()
             except Exception as e:
-                pass
+                print("Exception in main ", e)
 
         text_error = traceback.format_exc()
 
