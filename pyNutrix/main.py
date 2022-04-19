@@ -18,6 +18,8 @@ from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
 
+print("Antes de cargar el json")
+
 __version__ = str(json.load(open("version.json", "r"))["version"])
 
 
