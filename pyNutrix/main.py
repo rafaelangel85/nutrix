@@ -16,7 +16,7 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
-from View.MainScreen.main_screen import __version__ as major_version
+from View.MainScreen.main_screen import version as major_version
 
 __version__ = major_version
 
