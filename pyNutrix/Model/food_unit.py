@@ -1,6 +1,6 @@
 
 class FoodUnit(object):
     def __init__(self):
-        self.protein = 0
-        self.carbohydrate = 0
-        self.fat = 0
+        self.proteins_gr = 0.0
+        self.carbohydrates_gr = 0.0
+        self.fats_gr = 0.0
