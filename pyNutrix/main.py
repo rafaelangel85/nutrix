@@ -16,9 +16,6 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
-from View.MainScreen.main_screen import version as major_version
-
-__version__ = major_version
 
 
 class Nutrix(MDApp):
@@ -83,4 +80,6 @@ class Nutrix(MDApp):
                     Builder.load_file(path_to_kv_file)
 
 
-Nutrix().run()
+if __name__ == "__main__":
+    __version__ = '0.0.2'
+    Nutrix().run()

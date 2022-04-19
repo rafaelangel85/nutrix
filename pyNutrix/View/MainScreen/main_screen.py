@@ -3,8 +3,7 @@ from kivy.app import App
 
 from View.base_screen import BaseScreenView
 
-version = '0.0.2'
-
+__version__ = '0.0.2'
 
 class MainScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
@@ -20,4 +19,4 @@ class MainScreenView(BaseScreenView):
         App.get_running_app().root.current = screen
 
     def get_version(self) -> str:
-        return version
+        return __version__
