@@ -18,9 +18,9 @@ from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
 
-print("Antes de cargar el json")
+version = str(json.load(open("version.json", "r"))["version"])
 
-__version__ = str(json.load(open("version.json", "r"))["version"])
+__version__ = version
 
 
 class Nutrix(MDApp):
