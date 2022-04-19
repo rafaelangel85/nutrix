@@ -17,12 +17,16 @@ from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
 
+__version__ = "0.0.1"
+
 
 class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.load_all_kv_files(self.directory)
-        self.manager_screens = ScreenManager()
+        test1 = ScreenManager()
+        print("Despues de ScreenManager()")
+        self.manager_screens = test1
 
     def build(self) -> ScreenManager:
         """
