@@ -16,3 +16,7 @@ class TrackScreenView(BaseScreenView):
 
     def set_screen(self, screen: App) -> NoReturn:
         App.get_running_app().root.current = screen
+
+    def on_press_breakfast(self) -> NoReturn:
+        test = 1
+        pass
