@@ -24,9 +24,7 @@ class Nutrix(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.load_all_kv_files(self.directory)
-        test1 = ScreenManager()
-        print("Despues de ScreenManager()")
-        self.manager_screens = test1
+        self.manager_screens = ScreenManager()
 
     def build(self) -> ScreenManager:
         """
