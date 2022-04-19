@@ -85,14 +85,10 @@ class Toolbar(ThemableBehavior, FakeRectangularElevationBehavior,
             self.ids.mag.disabled = True
             self.ids.app_icon.disabled = True
 
-            Animation(size=(size, size), opacity=0,
-                      d=0.1).start(self.ids.mag)
-            Animation(size=(size, size), opacity=0,
-                      d=0.1).start(self.ids.title)
-            Animation(size=(size, size), opacity=0,
-                      d=0.1).start(self.ids.app_icon)
-            Animation(opacity=1,
-                      d=0.1).start(self.ids.search_bar)
+            Animation(size=(size, size), opacity=0, d=0.1).start(self.ids.mag)
+            Animation(size=(size, size), opacity=0, d=0.1).start(self.ids.title)
+            Animation(size=(size, size), opacity=0, d=0.1).start(self.ids.app_icon)
+            Animation(opacity=1, d=0.1).start(self.ids.search_bar)
         else:
             app().kv.ids.screens.transition = SingleSlideTransition()
             app().kv.ids.screens.transition.Direction = 'down'
@@ -108,14 +104,10 @@ class Toolbar(ThemableBehavior, FakeRectangularElevationBehavior,
             self.ids.app_icon.disabled = False
             self.ids.mag.disabled = False
 
-            Animation(size=(size, size), opacity=1,
-                      d=0.1).start(self.ids.mag)
-            Animation(size=(size, size), opacity=1,
-                      d=0.1).start(self.ids.title)
-            Animation(size=(size, size), opacity=1,
-                      d=0.1).start(self.ids.app_icon)
-            Animation(opacity=0,
-                      d=0.1).start(self.ids.search_bar)
+            Animation(size=(size, size), opacity=1, d=0.1).start(self.ids.mag)
+            Animation(size=(size, size), opacity=1, d=0.1).start(self.ids.title)
+            Animation(size=(size, size), opacity=1, d=0.1).start(self.ids.app_icon)
+            Animation(opacity=0, d=0.1).start(self.ids.search_bar)
 
     def set_search_list(self, text="", search=False):
         text = text.lower()
@@ -322,11 +314,9 @@ class BillBookApp(MDApp):
                     config.write(config_file)
 
     def update(self, *args):
-        self.pad = \
-            self.kv.ids.custom_carousel.ids.car.children[0].children[0].ids.lab.pos[0]
-        self.chart_size = \
-            self.kv.ids.custom_chart.ids.chart_box.size[1] - 4 \
-            * self.kv.ids.custom_chart.ids.label.font_size
+        self.pad = self.kv.ids.custom_carousel.ids.car.children[0].children[0].ids.lab.pos[0]
+        self.chart_size = self.kv.ids.custom_chart.ids.chart_box.size[1] - 4 \
+                          * self.kv.ids.custom_chart.ids.label.font_size
 
     def build(self):
         self.kv = Builder.load_file(f'{BILLBOOK_DIR}/main.kv')
