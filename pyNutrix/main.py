@@ -11,6 +11,7 @@ https://github.com/HeaTTheatR/LoginAppMVC
 https://en.wikipedia.org/wiki/Model–view–controller
 """
 import os
+import json
 from typing import NoReturn
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
@@ -81,5 +82,5 @@ class Nutrix(MDApp):
 
 
 if __name__ == "__main__":
-    __version__ = '0.0.2'
+    __version__ = json.load(open("version.json", "r"))["version"]
     Nutrix().run()
