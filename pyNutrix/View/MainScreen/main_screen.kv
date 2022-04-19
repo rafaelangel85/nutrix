@@ -7,9 +7,6 @@
     MDBoxLayout:
         orientation: "vertical"
 
-        MDToolbar:
-            title: "MainScreen - " + root.get_version()
-
         MDFloatLayout:
 
             MDBoxLayout:
@@ -64,3 +61,10 @@
                         value: 55
                         max: 100
                         orientation: "horizontal"
+
+        MDBottomAppBar:
+            MDToolbar
+                title: "Title"
+                icon: "git"
+                type: "bottom"
+                left_action_items: [["menu", lambda x: x]]
