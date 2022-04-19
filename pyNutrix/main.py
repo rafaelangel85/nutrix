@@ -18,6 +18,8 @@ from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
 
+__version__ = json.load(open("version.json", "r"))["version"]
+
 
 class Nutrix(MDApp):
     def __init__(self, **kwargs):
@@ -82,5 +84,4 @@ class Nutrix(MDApp):
 
 
 if __name__ == "__main__":
-    __version__ = json.load(open("version.json", "r"))["version"]
     Nutrix().run()
