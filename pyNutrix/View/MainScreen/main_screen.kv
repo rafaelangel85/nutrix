@@ -1,4 +1,5 @@
 #:import images_path kivymd.images_path
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 
 # md_bg_color: app.theme_cls.primary_color # Esto es para que se vea el fondo del MDToolbar root.set_screen('track screen')
 
@@ -62,9 +63,36 @@
                         max: 100
                         orientation: "horizontal"
 
-        MDBottomAppBar:
-            MDToolbar
-                title: "Title"
-                icon: "git"
-                type: "bottom"
-                left_action_items: [["menu", lambda x: x]]
+        MDBottomNavigation:
+            panel_color: get_color_from_hex("#eeeaea")
+            selected_color_background: get_color_from_hex("#97ecf8")
+            text_color_active: 0, 0, 0, 1
+
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: 'Mail'
+                icon: 'gmail'
+                badge_icon: "numeric-10"
+
+                MDLabel:
+                    text: 'Mail'
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                text: 'Discord'
+                icon: 'discord'
+                badge_icon: "numeric-5"
+
+                MDLabel:
+                    text: 'Discord'
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: 'LinkedIN'
+                icon: 'linkedin'
+
+                MDLabel:
+                    text: 'LinkedIN'
+                    halign: 'center'
