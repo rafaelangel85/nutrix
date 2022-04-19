@@ -1,7 +1,8 @@
-import json
 from typing import NoReturn
 from kivy.app import App
 from View.base_screen import BaseScreenView
+
+__version__ = '0.0.3'
 
 
 class MainScreenView(BaseScreenView):
@@ -18,4 +19,4 @@ class MainScreenView(BaseScreenView):
         App.get_running_app().root.current = screen
 
     def get_version(self) -> str:
-        return json.load(open("version.json", "r"))["version"]
+        return __version__
