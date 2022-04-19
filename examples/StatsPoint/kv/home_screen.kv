@@ -1,0 +1,38 @@
+<HomeScreen>
+    on_pre_enter: app.root.ids.my_toolbar.title = 'Homepage'
+    FitImage:
+        source: 'assets/tennis.jpg'
+    MDLabel:
+        text: 'Welcome to StatsPoint!'
+        halign: 'center'
+        font_name: 'fonts/Montserrat-Regular.ttf'
+        font_size: "30sp"
+        theme_text_color: 'Custom'
+        text_color: 1, 1, 1, 1
+        pos_hint: {'center_y': .8, 'center_x': .5}
+        size_hint_x: .9
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(30)
+        padding: ['24dp', '24dp', '24dp', '32dp']
+        md_bg_color: 1, 1, 1, .2
+        size_hint_x: .75
+        pos_hint: {'center_x': .5, 'center_y': .3}
+        size_hint_y: None
+        height: self.minimum_height
+
+        MDRaisedButton:
+            text: "CREATE A MATCH"
+            pos_hint: {'center_x': .5}
+            on_release: app.change_screen('input_screen')
+            md_bg_color: 0.91, 0.46, 0.07, .8
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1
+        MDRaisedButton:
+            text: "SAVED MATCH"
+            pos_hint: {'center_x': .5}
+            on_release: app.change_screen('save_screen')
+            md_bg_color: 0.91, 0.46, 0.07, .8
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1

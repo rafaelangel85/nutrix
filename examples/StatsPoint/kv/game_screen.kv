@@ -1,0 +1,186 @@
+<GameButton@MDRaisedButton>:
+    md_bg_color: 0.91, 0.46, 0.07, 1
+    theme_text_color: 'Custom'
+    text_color: 1, 1, 1, 1
+    elevation: 5
+    height: dp(45)
+    pos_hint: {'center_x': .5}
+    font_name: 'fonts/Lato-Bold.ttf'
+
+<Square>
+    elevation: 0
+    md_bg_color: app.get_rgba_from_hex('#f1f1f1')
+    size_hint: .6, .5
+    pos_hint: {'center_y': .5}
+    MDLabel:
+        id: label
+        halign: 'center'
+        theme_text_color: 'Custom'
+        font_name: 'fonts/Lato-Regular.ttf'
+        pos_hint: {'center_y': .5}
+<ScoreLine>
+    orientation: 'horizontal'
+    size_hint: .9, .2
+    pos_hint: {'center_x':.5}
+    spacing: dp(5)
+    padding: ['5dp' ,0 ,'20dp', 0]
+    md_bg_color: 1, 1, 1 ,1
+    elevation: 5
+    MDIcon:
+        id: server
+        icon: 'tennis-ball'
+        halign: 'right'
+        size_hint: .2, 1
+    MDLabel:
+        id: player_name
+        halign: 'center'
+        pos_hint: {'center_y': .5}
+        size_hint: .5, None
+    MDBoxLayout:
+        id: number_layout
+        orientation: 'horizontal'
+        spacing: dp(10)
+        Square:
+            id: points_label
+            md_bg_color: 1, 1, 1, 1
+            canvas.before:
+                Color:
+                    rgba: 0.91, 0.46, 0.07, 1
+                Line:
+                    width: dp(1.5)
+                    rectangle: self.x, self.y, self.width, self.height
+                    joint: 'miter'
+        Widget:
+            size_hint_x: .2
+        Square:
+            id: set1
+        Square:
+            id: set2
+        Square:
+            id: set3
+
+
+<ButtonBox@MDBoxLayout>
+    orientation: 'horizontal'
+    adaptive_size: True
+    pos_hint: {'top': 1, 'center_x': .5}
+    spacing: dp(50)
+    padding: ['20dp' ,0 ,'20dp', 0]
+
+
+<Box>
+    orientation: 'vertical'
+    adaptive_height: True
+    pos_hint: {'center_x': .5, 'top': .95}
+    size_hint_x: .9
+    md_bg_color: 1, 1, 1 ,1
+    padding: ['10dp', '10dp', 0, '20dp']
+    elevation: 5
+    spacing: dp(20)
+    MDLabel:
+        id: caption
+        text: 'Service'
+        halign: 'center'
+        size_hint_y: None
+        height: self.texture_size[1]
+    MDSeparator:
+        height: '1dp'
+        size_hint_x: .9
+        pos_hint: {'center_x': .5, 'top': .1}
+
+<GameScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: [0, '15dp']
+        pos_hint: {'top': 1}
+        md_bg_color: app.get_rgba_from_hex('#EEEEEE')
+        ScoreLine:
+            id: score_line1
+        MDSeparator:
+            height: '1dp'
+            size_hint_x: .9
+            pos_hint: {'center_x': .5}
+        ScoreLine:
+            id: score_line2
+        ScreenManager:
+            id: game_manager
+            MDScreen:
+                name: 'service'
+                Box:
+                    ButtonBox:
+                        GameButton:
+                            id: ace
+                            text: 'Ace'
+                            on_release: root.press_ace()
+                            height: '80dp'
+                        GameButton:
+                            id: fault
+                            text: 'Fault'
+                            on_release: root.press_fault()
+                            height: '80dp'
+                    ButtonBox:
+                        GameButton:
+                            text: 'Rally'
+                            on_release: root.press_rally()
+                            height: '80dp'
+                        GameButton:
+                            text: 'Save'
+                            on_release: root.press_save()
+                            height: '80dp'
+            MDScreen:
+                name: 'on_court'
+                on_pre_enter: rally_box.ids.caption.text = 'Who won the point?'
+                Box:
+                    id: rally_box
+                    ButtonBox:
+                        GameButton:
+                            id: pl1_btn
+                            on_release: root.press_player(root.match.player1, root.match.player2)
+                        GameButton:
+                            id: pl2_btn
+                            on_release: root.press_player(root.match.player2, root.match.player1)
+            MDScreen:
+                name: 'game_details1'
+                Box:
+                    id: detail1_box
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        adaptive_size: True
+                        pos_hint: {'top': .9, 'center_x': .5}
+                        spacing: dp(50)
+
+                        GameButton:
+                            id: forced_error
+                            text: 'Forced Error'
+                            on_release: root.press_forced_error()
+                        GameButton
+                            id: unforced_error
+                            text: 'Unforced Error'
+                            on_release: root.press_unforced_error()
+                    GameButton:
+                        id: winner
+                        text: 'Winner'
+                        increment_width: dp(100)
+                        on_release: root.press_winner()
+            MDScreen:
+                name: 'game_details2'
+                Box:
+                    id: detail2_box
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        adaptive_size: True
+                        pos_hint: {'top': .9, 'center_x': .5}
+                        spacing: dp(50)
+                        GameButton:
+                            id: backhand
+                            text: 'Backhand'
+                            on_release: root.press_backhand()
+                        GameButton:
+                            id: forehand
+                            text: 'Forehand'
+                            on_release: root.press_forehand()
+                    GameButton:
+                        id: volley
+                        text: 'Volley / Smash'
+                        increment_width: dp(100)
+                        on_release: root.press_volley()

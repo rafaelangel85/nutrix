@@ -1,0 +1,77 @@
+#:include kv/game_screen.kv
+#:include kv/input_screen.kv
+#:include kv/home_screen.kv
+#:include kv/data_screen.kv
+#:include kv/save_screen.kv
+#:include kv/navigation_drawer.kv
+#:include kv/setting_screen.kv
+#:include kv/form_screen.kv
+#:include kv/diagram_screen.kv
+#:include kv/training_screen.kv
+
+
+NavigationLayout:
+    ScreenManager:
+
+        Screen:
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                id: screen_template
+
+                MyToolbar:
+                    id: my_toolbar
+                    title: "Homepage"
+                    elevation: 0
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state()]]
+                    right_action_items: [["information-outline", lambda x: self.show_dialog_confirmation()]]
+                    specific_text_color: 1, 1, 1, 1
+                    md_bg_color: 0.91, 0.46, 0.07, 1
+                ScreenManager:
+                    id: manager
+
+                    HomeScreen:
+                        name: 'home_screen'
+                        id: home_screen
+
+                    InputScreen:
+                        id: input_screen
+                        name : 'input_screen'
+
+                    GameScreen:
+                        name: "game_screen"
+                        id: game_screen
+
+                    SaveScreen:
+                        name: 'save_screen'
+                        id: save_screen
+
+                    DataScreen:
+                        name : 'data_screen'
+                        id: data_screen
+
+                    SettingScreen:
+                        name : 'setting_screen'
+                        id: setting_screen
+
+                    FormScreen:
+                        name : 'form_screen'
+                        id: form_screen
+
+                    DiagramScreen:
+                        name : 'diagram_screen'
+                        id: diagram_screen
+
+                    TrainingScreen:
+                        name: 'training_screen'
+                        id: training_screen
+
+    NavDrawer:
+        id: nav_drawer
+
+
+
+
+
+
+

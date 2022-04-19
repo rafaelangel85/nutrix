@@ -1,0 +1,20 @@
+<SaveScreen>
+    md_bg_color: app.get_rgba_from_hex('#EEEEEE')
+    ScrollView:
+        MDList:
+            id: match_list
+    MDLabel:
+        id: empty_text
+        halign: 'center'
+        text: ''
+        pos_hint: {'center_y': .5, 'center_x': .5}
+        size_hint_x: .8
+        font_size: "18sp"
+        font_name: 'fonts/Montserrat-Regular.ttf'
+
+    MDFloatingActionButton:
+        icon: "home-outline"
+        elevation_normal: 8
+        pos_hint: {"center_x": .85, "center_y":.1}
+        md_bg_color: app.theme_cls.primary_color
+        on_release: app.change_screen('home_screen', 'right')

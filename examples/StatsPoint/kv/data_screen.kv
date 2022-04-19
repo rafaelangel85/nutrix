@@ -1,0 +1,148 @@
+<LeaderBoard>
+    cols: 1
+    spacing: dp(10)
+    size_hint_y: None
+    height: self.minimum_height
+    row_default_height: '40dp'
+    row_force_default: True
+    padding: [0, dp(10)]
+
+<DataLine>
+    orientation: 'horizontal'
+    spacing: dp(50)
+    md_bg_color: 1, 1, 1, 1
+    size_hint: .9, .2
+    spacing: dp(25)
+    padding: ['5dp' ,0 ,'20dp', 0]
+    pos_hint: {'center_x':.5}
+    MDLabel:
+        id: player_name
+        text: 'Player 1'
+        halign: 'center'
+        size_hint: .3, None
+        pos_hint: {'center_y':.5}
+        font_name: 'fonts/Montserrat-Regular.ttf'
+    Square:
+        id: set1
+        size_hint: .08, .5
+    Square:
+        id: set2
+        size_hint: .08, .5
+    Square:
+        id: set3
+        size_hint: .08, .5
+
+
+<Rows>
+    orientation: 'horizontal'
+    spacing: dp(50)
+    padding: ['40dp', 0, '40dp', 0]
+    Square:
+        id: col1
+        size_hint: .4, .7
+    MDLabel:
+        id: col2
+        text: 'VS'
+        halign: 'center'
+        font_name: 'fonts/Montserrat-Regular.ttf'
+        font_size: '14sp'
+    Square:
+        id: col3
+        size_hint: .4, .7
+
+
+<DataScreen>:
+    on_pre_enter: bottom_navigation._refresh_tabs()
+    on_pre_enter: set1_scroll.scroll_y = 1 ; set2_scroll.scroll_y = 1 ; set3_scroll.scroll_y = 1 ; total_scroll.scroll_y = 1
+    on_pre_enter: bottom_navigation.switch_tab('set1')
+    on_enter: root.scroll_animation()
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: [0 ,'12dp', 0, 0]
+        pos_hint: {'top': 1}
+        md_bg_color: app.get_rgba_from_hex('#EEEEEE')
+        DataLine:
+            id: player1
+        MDSeparator:
+            height: '1dp'
+            size_hint_x: .9
+            pos_hint: {'center_x': .5}
+        DataLine:
+            id: player2
+        Widget:
+            height: '10dp'
+            size_hint_y: None
+        MDBottomNavigation:
+            id: bottom_navigation
+
+            MDBottomNavigationItem:
+                name: 'set1'
+                text: 'Set 1'
+                icon: 'tennis'
+                on_pre_enter: set1_scroll.scroll_y = 1
+
+                pos_hint: {'center_x':.5}
+                RecycleView:
+                    id: set1_scroll
+                    pos_hint: {"top": 1, "left": 1}
+                    size_hint: 1, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+            MDBottomNavigationItem:
+                name: 'set2'
+                text: 'Set 2'
+                icon: 'tennis'
+                on_pre_enter: set2_scroll.scroll_y = 1
+                MDSeparator:
+                    height: '1dp'
+                    pos_hint: {'top': 1}
+                RecycleView:
+                    id: set2_scroll
+                    pos_hint: {"top": 1, "left": 1}
+                    size_hint: 1, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+            MDBottomNavigationItem:
+                name: 'set3'
+                text: 'Set 3'
+                icon: 'tennis'
+                on_pre_enter: set3_scroll.scroll_y = 1
+                MDSeparator:
+                    height: '1dp'
+                    pos_hint: {'top': 1}
+                RecycleView:
+                    id: set3_scroll
+                    pos_hint: {"top": 1, "left": 1}
+                    size_hint: 1, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+            MDBottomNavigationItem:
+                name: 'total'
+                text: 'Match'
+                icon: 'tennis'
+                on_pre_enter: total_scroll.scroll_y = 1
+                MDSeparator:
+                    height: '1dp'
+                    pos_hint: {'top': 1}
+                RecycleView:
+                    id: total_scroll
+                    pos_hint: {"top": 1, "left": 1}
+                    size_hint: 1, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
