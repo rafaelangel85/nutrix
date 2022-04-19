@@ -21,6 +21,13 @@
                 pos_hint: {"center_x": .5, "center_y": .5}
 
                 MDLabel:
+                    id: title_label
+                    text: "Nutrix - " + root.get_version()
+                    font_style: "H5"
+                    adaptive_height: True
+                    halign: "left"
+
+                MDLabel:
                     id: prev_label
                     text: "Tracking progress"
                     font_style: "H6"
@@ -70,29 +77,7 @@
 
             MDBottomNavigationItem:
                 name: 'screen 1'
-                text: 'Mail'
-                icon: 'gmail'
+                text: 'Add Food'
+                icon: 'food'
                 badge_icon: "numeric-10"
-
-                MDLabel:
-                    text: 'Mail'
-                    halign: 'center'
-
-            MDBottomNavigationItem:
-                name: 'screen 2'
-                text: 'Discord'
-                icon: 'discord'
-                badge_icon: "numeric-5"
-
-                MDLabel:
-                    text: 'Discord'
-                    halign: 'center'
-
-            MDBottomNavigationItem:
-                name: 'screen 3'
-                text: 'LinkedIN'
-                icon: 'linkedin'
-
-                MDLabel:
-                    text: 'LinkedIN'
-                    halign: 'center'
+                on_tab_press: root.set_screen('track screen')
