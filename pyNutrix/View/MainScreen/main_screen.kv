@@ -1,11 +1,15 @@
 #:import images_path kivymd.images_path
 
-# md_bg_color: app.theme_cls.primary_color # Esto es para que se vea el fondo del MDToolbar
+# md_bg_color: app.theme_cls.primary_color # Esto es para que se vea el fondo del MDToolbar root.set_screen('track screen')
 
 <MainScreenView>
 
     MDBoxLayout:
         orientation: "vertical"
+
+        MDToolbar:
+            title: "MainScreen - " + root.get_version()
+            left_action_items: [["food", lambda x: x]]
 
         MDFloatLayout:
 
