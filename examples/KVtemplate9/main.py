@@ -5,6 +5,8 @@ from kivy import properties as p
 from manager.navigation import NavigationManager
 
 
+__version__ = '0.0.1'
+
 class MainSreenManager(NavigationManager):
     pass
 
