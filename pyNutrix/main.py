@@ -59,7 +59,8 @@ class Nutrix(MDApp):
             view.name = name_screen
             self.manager_screens.add_widget(view)
 
-    def load_all_kv_files(self, path_to_directory: str) -> None:
+    @staticmethod
+    def load_all_kv_files(path_to_directory: str) -> None:
         """
         Recursively loads KV files from the selected directory.
         .. versionadded:: 1.0.0
@@ -73,10 +74,9 @@ class Nutrix(MDApp):
             ):
                 continue
             for name_file in files:
-                if (
-                        os.path.splitext(name_file)[1] == ".kv"
-                        and name_file != "style.kv"  # if use PyInstaller
-                        and "__MACOS" not in path_to_dir  # if use Mac OS
+                if (os.path.splitext(name_file)[1] == ".kv"
+                    and name_file != "style.kv"  # if use PyInstaller
+                    and "__MACOS" not in path_to_dir  # if use Mac OS
                 ):
                     path_to_kv_file = os.path.join(path_to_dir, name_file)
                     Builder.load_file(path_to_kv_file)
