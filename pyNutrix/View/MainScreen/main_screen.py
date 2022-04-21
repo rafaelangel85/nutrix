@@ -2,7 +2,7 @@ from typing import NoReturn
 from kivy.app import App
 from View.base_screen import BaseScreenView
 
-__version__ = '0.0.5b'
+__version__ = '0.0.5'
 
 
 class MainScreenView(BaseScreenView):
