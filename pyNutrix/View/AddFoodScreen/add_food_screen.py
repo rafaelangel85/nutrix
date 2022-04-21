@@ -3,7 +3,6 @@ from typing import NoReturn
 
 from kivy.app import App
 
-
 class AddFoodScreenView(BaseScreenView):
     """Implements the add food screen in the user application."""
 
@@ -16,3 +15,4 @@ class AddFoodScreenView(BaseScreenView):
 
     def set_screen(self, screen: App) -> NoReturn:
         App.get_running_app().root.current = screen
+

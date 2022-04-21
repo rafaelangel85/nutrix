@@ -19,9 +19,6 @@
             md_bg_color: 1, 1, 1, .5
             pos_hint: {"center_x": .5, "center_y": .5}
 
-        OneLineListItem:
-            text: "Single-line item"
-
         MDBottomNavigation:
             panel_color: app.theme_cls.primary_color
             selected_color_background: get_color_from_hex("#97ecf8")
@@ -31,5 +28,9 @@
                 name: 'main screen'
                 text: 'Home'
                 icon: 'home'
-                badge_icon: "numeric-10"
+                on_tab_press: root.set_screen('main screen')
+            MDBottomNavigationItem:
+                name: 'back_from_add_food_screen'
+                text: 'Back'
+                icon: 'arrow-left-bold'
                 on_tab_press: root.set_screen('main screen')
