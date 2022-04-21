@@ -17,7 +17,7 @@ from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 
 class Nutrix(MDApp):
