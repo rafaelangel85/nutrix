@@ -1,12 +1,11 @@
-from typing import NoReturn
-from kivy.app import App
 from View.base_screen import BaseScreenView
+from typing import NoReturn
 
-__version__ = '0.0.5b'
+from kivy.app import App
 
 
-class MainScreenView(BaseScreenView):
-    """Implements the login start screen in the user application."""
+class AddFoodScreenView(BaseScreenView):
+    """Implements the add food screen in the user application."""
 
     def model_is_changed(self) -> NoReturn:
         """
@@ -17,6 +16,3 @@ class MainScreenView(BaseScreenView):
 
     def set_screen(self, screen: App) -> NoReturn:
         App.get_running_app().root.current = screen
-
-    def get_version(self) -> str:
-        return __version__

@@ -22,19 +22,12 @@
             pos_hint: {"center_x": .5, "center_y": .5}
 
             MDLabel:
-                id: title_label
-                text: "   Nutrix - " + root.get_version()
-                font_style: "H5"
-                adaptive_height: True
-                halign: "left"
-
-            MDLabel:
                 id: prev_label
                 text: "Tracking progress"
                 font_style: "H6"
                 adaptive_height: True
                 halign: "center"
-                spacing: "20dp"
+                spacing: "10dp"
 
             MDBoxLayout:
                 orientation: "vertical"
@@ -71,6 +64,13 @@
                     value: 55
                     max: 100
                     orientation: "horizontal"
+
+        MDLabel:
+            id: version_label
+            text: "Nutrix - " + root.get_version() + "  "
+            adaptive_height: True
+            halign: "right"
+            spacing: "10dp"
 
         MDBottomNavigation:
             panel_color: app.theme_cls.primary_color
