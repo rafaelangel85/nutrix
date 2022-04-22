@@ -9,7 +9,6 @@ class EventSample(object):
 
         if event_handler not in self.callbacks:
             self.callbacks[event_handler] = [callback]
-            pass
         else:
             self.callbacks[event_handler].append(callback)
 

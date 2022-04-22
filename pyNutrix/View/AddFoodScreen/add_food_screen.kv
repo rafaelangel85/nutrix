@@ -18,15 +18,11 @@
             padding: "12dp"
             md_bg_color: 1, 1, 1, .5
             pos_hint: {"center_x": .5, "center_y": .5}
+
         ScrollView:
             MDList:
                 id: available_food_list
-
-        MDRectangleFlatButton:
-            text: "Do the list"
-            text_color: 0, 0, 1, 1
-            md_bg_color: 1, 1, 0, 1
-            on_press: root.do_the_list_view()
+                on: root.do_the_list_view()
 
         MDBottomNavigation:
             panel_color: app.theme_cls.primary_color

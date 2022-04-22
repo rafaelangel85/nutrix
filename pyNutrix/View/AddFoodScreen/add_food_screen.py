@@ -1,9 +1,8 @@
 from View.base_screen import BaseScreenView
 from typing import NoReturn
-
 from kivy.app import App
-
 from kivymd.uix.list import OneLineListItem
+
 
 class AddFoodScreenView(BaseScreenView):
     """Implements the add food screen in the user application."""
@@ -22,3 +21,6 @@ class AddFoodScreenView(BaseScreenView):
         for i in range(0, 30):
             self.ids.available_food_list.add_widget(OneLineListItem(text=f"Single-line item {i}"))
 
+    def on_food_item_press(self):
+        test1 = self.ids.selected_food_list
+        pass
