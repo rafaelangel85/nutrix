@@ -1,5 +1,4 @@
 from View.AddFoodScreen.add_food_screen import AddFoodScreenView
-from kivymd.uix.list import OneLineListItem
 
 
 class AddFoodScreenController:
@@ -13,7 +12,8 @@ class AddFoodScreenController:
     def __init__(self, model):
         self.model = model  # Model.main_screen.MainScreenModel
         self.view = AddFoodScreenView(controller=self, model=self.model)
-        self.view.ids.available_food_list.add_widget(OneLineListItem(text=f"Single-line item 1"))
 
     def get_view(self) -> AddFoodScreenView:
         return self.view
+
+
