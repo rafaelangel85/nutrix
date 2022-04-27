@@ -3,18 +3,21 @@
 
 <AddFoodScreenView>
 
-    FitImage:
-        source: 'assets/images/add_food_screen.png'
-
     MDBoxLayout:
         orientation: "vertical"
-        adaptive_height: True
-        size_hint_x: None
-        width: root.width
-        radius: 12
-        padding: "12dp"
-        md_bg_color: 1, 1, 1, .5
-        pos_hint: {"center_x": .5, "center_y": .5}
+
+        FitImage:
+            source: 'assets/images/add_food_screen.png'
+
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            size_hint_x: None
+            width: root.width
+            radius: 12
+            padding: "12dp"
+            md_bg_color: 1, 1, 1, .5
+            pos_hint: {"center_x": .5, "center_y": .5}
 
         ScrollView:
             MDList:
@@ -35,4 +38,4 @@
                 name: 'back_from_add_food_screen'
                 text: 'Back'
                 icon: 'arrow-left-bold'
-                on_tab_press: root.set_screen('track screen')
+                on_tab_press: root.set_screen('main screen')

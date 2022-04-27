@@ -10,8 +10,8 @@
         "fat": 2.6,
         "energy": 111.0
       }
-    }
-  },
+    },
+
     "Yogurt Mercadona":
     {
       "nutrition_data":
@@ -22,7 +22,8 @@
         "energy": 54.0
       }
     },
-    "":
+
+    "Otra cosa":
     {
       "nutrition_data":
       {
@@ -32,4 +33,5 @@
         "energy": 0.0
       }
     }
+  }
 }
