@@ -5,9 +5,12 @@ from kivymd.uix.list import OneLineListItem
 from kivymd.uix.behaviors import TouchBehavior
 import json
 import os
+from Model.food_unit import FoodUnit
 
 json_path = os.path.join(os.path.curdir, 'data/data.json')
 json_file = json.load(open(json_path))
+
+food_selected = FoodUnit()
 
 
 class TouchableOneListItem(OneLineListItem, TouchBehavior):
@@ -15,10 +18,10 @@ class TouchableOneListItem(OneLineListItem, TouchBehavior):
     def on_touch_up(self, touch):
         for food in json_file['food']:
             if food == self.text:
-                carbohydrate = json_file['food'][food]['nutrition_data']['carbohydrate']
-                protein = json_file['food'][food]['nutrition_data']['protein']
-                fat = json_file['food'][food]['nutrition_data']['fat']
-                energy = json_file['food'][food]['nutrition_data']['energy']
+                food_selected.carbohydrates_gr = json_file['food'][food]['nutrition_data']['carbohydrate']
+                food_selected.proteins_gr = json_file['food'][food]['nutrition_data']['protein']
+                food_selected.fats_gr = json_file['food'][food]['nutrition_data']['fat']
+                food_selected.energy_kcal = json_file['food'][food]['nutrition_data']['energy']
                 App.get_running_app().root.current = 'food quantity screen'
 
 
