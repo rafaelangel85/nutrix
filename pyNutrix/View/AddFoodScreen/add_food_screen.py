@@ -19,6 +19,7 @@ class TouchableOneListItem(OneLineListItem, TouchBehavior):
                 protein = json_file['food'][food]['nutrition_data']['protein']
                 fat = json_file['food'][food]['nutrition_data']['fat']
                 energy = json_file['food'][food]['nutrition_data']['energy']
+                App.get_running_app().root.current = 'main screen'
 
 
 class AddFoodScreenView(BaseScreenView):
