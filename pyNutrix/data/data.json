@@ -1,0 +1,35 @@
+{
+  "food":
+  {
+    "Pechuga de pollo":
+    {
+      "nutrition_data":
+      {
+        "protein": 21.9,
+        "carbohydrate": 0.0,
+        "fat": 2.6,
+        "energy": 111.0
+      }
+    }
+  },
+    "Yogurt Mercadona":
+    {
+      "nutrition_data":
+      {
+        "protein": 3.5,
+        "carbohydrate": 3.4,
+        "fat": 3.0,
+        "energy": 54.0
+      }
+    },
+    "":
+    {
+      "nutrition_data":
+      {
+        "protein": 0.0,
+        "carbohydrate": 0.0,
+        "fat": 0.0,
+        "energy": 0.0
+      }
+    }
+}

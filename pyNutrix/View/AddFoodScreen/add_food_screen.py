@@ -2,6 +2,8 @@ from View.base_screen import BaseScreenView
 from typing import NoReturn
 from kivy.app import App
 from kivymd.uix.list import OneLineListItem
+import json
+import os
 
 
 class AddFoodScreenView(BaseScreenView):
@@ -14,13 +16,13 @@ class AddFoodScreenView(BaseScreenView):
         according to these changes.
         """
 
-    def set_screen(self, screen: App) -> NoReturn:
+    @staticmethod
+    def set_screen(screen: App) -> NoReturn:
         App.get_running_app().root.current = screen
 
     def do_the_list_view(self) -> NoReturn:
-        for i in range(0, 30):
-            self.ids.available_food_list.add_widget(OneLineListItem(text=f"Single-line item {i}"))
+        json_path = os.path.join(os.path.curdir, 'data/data.json')
+        json_file = json.load(open(json_path))
 
-    def on_food_item_press(self):
-        test1 = self.ids.selected_food_list
-        pass
+        for food in json_file['food']:
+            self.ids.available_food_list.add_widget(OneLineListItem(text=food))
