@@ -2,8 +2,23 @@ from View.base_screen import BaseScreenView
 from typing import NoReturn
 from kivy.app import App
 from kivymd.uix.list import OneLineListItem
+from kivymd.uix.behaviors import TouchBehavior
 import json
 import os
+
+json_path = os.path.join(os.path.curdir, 'data/data.json')
+json_file = json.load(open(json_path))
+
+
+class TouchableOneListItem(OneLineListItem, TouchBehavior):
+
+    def on_touch_up(self, touch):
+        for food in json_file['food']:
+            if food == self.text:
+                carbohydrate = json_file['food'][food]['nutrition_data']['carbohydrate']
+                protein = json_file['food'][food]['nutrition_data']['protein']
+                fat = json_file['food'][food]['nutrition_data']['fat']
+                energy = json_file['food'][food]['nutrition_data']['energy']
 
 
 class AddFoodScreenView(BaseScreenView):
@@ -21,8 +36,5 @@ class AddFoodScreenView(BaseScreenView):
         App.get_running_app().root.current = screen
 
     def do_the_list_view(self) -> NoReturn:
-        json_path = os.path.join(os.path.curdir, 'data/data.json')
-        json_file = json.load(open(json_path))
-
         for food in json_file['food']:
-            self.ids.available_food_list.add_widget(OneLineListItem(text=food))
+            self.ids.available_food_list.add_widget(TouchableOneListItem(text=food))
