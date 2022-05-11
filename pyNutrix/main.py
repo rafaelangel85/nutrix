@@ -16,9 +16,8 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from View.screens import screens
 from kivy.lang import Builder
-from View.MainScreen.main_screen import __version__ as version
 
-__version__ = version
+__version__ = '0.0.5'
 
 
 class Nutrix(MDApp):
